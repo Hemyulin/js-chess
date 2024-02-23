@@ -8,6 +8,12 @@ function createChessBoard() {
     for (let column = 0; column < 8; column++) {
       const square = document.createElement("div");
       square.className = "square";
+      if ((row + column) % 2 === 0) {
+        square.classList.add("light");
+      } else {
+        square.classList.add("dark");
+      }
+
       rowDiv.appendChild(square);
     }
     console.log("rowDiv");
