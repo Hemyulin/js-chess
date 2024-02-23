@@ -24,4 +24,3 @@ function createChessBoard() {
 }
 
 createChessBoard();
-console.log();
