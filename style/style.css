@@ -2,10 +2,18 @@
   border: 1px solid red;
   width: 20px;
   height: 20px;
+  display: flex;
 }
 
 div {
+  flex-direction: column;
   border: 2px solid red;
+  width: 29px;
+  height: 29px;
+}
+
+.square {
+  border: 2px solid black;
   width: 29px;
   height: 29px;
 }
