@@ -24,3 +24,5 @@ function createChessBoard() {
 }
 
 createChessBoard();
+
+// TODO: ADD WHO'S TURN
