@@ -1,9 +1,11 @@
 class Piece {
   constructor() {
-    this.type = type;
-    this.color = color;
-    this.location = this.location;
+    this.type = type; // rook, bishop, etc.
+    this.color = color; // black or white
+    this.location = this.location; // square
     this.pointsWorth = pointsWorth; // <-- UNSURE
+    this.isFirstMove = this.isFirstMove; // for castling, pawn 2 square and en passant
+    this.isChecked = this.isChecked; // for king
   }
   move() {
     //TODO: DEFINE MOVE

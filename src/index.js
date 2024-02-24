@@ -16,11 +16,9 @@ function createChessBoard() {
 
       rowDiv.appendChild(square);
     }
-    console.log("rowDiv");
     board.appendChild(rowDiv);
   }
   document.body.appendChild(board);
-  console.log(board);
 }
 
 createChessBoard();
