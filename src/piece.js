@@ -2,9 +2,8 @@ class Piece {
   constructor(type, color, figureImage) {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
-    this.location = this.location; // square
+    this.location = this.location; // square id
     this.isFirstMove = this.isFirstMove; // for castling, pawn 2 square and en passant
-    this.isChecked = this.isChecked; // for king
 
     const imgObject = document.createElement("img");
     imgObject.classList = "figure-img";
@@ -85,6 +84,7 @@ class King extends Piece {
   constructor(color, figureImage) {
     super("king", color, figureImage);
 
+    this.isChecked = this.isChecked;
     this.type = "king";
     this.color === "black"
       ? (this.figureImage.src = "./assets/img/black_king.png")

@@ -37,6 +37,7 @@ function initialWhitePawnPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}2`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 1;
   });
@@ -53,6 +54,7 @@ function initialBlackPawnPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}7`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 1;
   });
@@ -69,6 +71,7 @@ function initialWhiteRookPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}1`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 7;
   });
@@ -85,6 +88,7 @@ function initialBlackRookPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}8`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 7;
   });
@@ -101,6 +105,7 @@ function initialWhiteKightPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}1`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 5;
   });
@@ -117,6 +122,7 @@ function initialBlackKightPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}8`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 5;
   });
@@ -133,8 +139,10 @@ function initialWhiteBishopPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}1`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 3;
+    console.log(whiteBishop);
   });
 }
 
@@ -149,6 +157,7 @@ function initialBlackBishopPositions() {
     let square = document.getElementById(
       `square-${String.fromCharCode(counter)}8`
     );
+    element.location = square;
     square.appendChild(element.figureImage);
     counter += 3;
   });
@@ -157,24 +166,28 @@ function initialBlackBishopPositions() {
 function initialWhiteQueenPositions() {
   let whiteQueen = new Queen("white", document.createElement("img"));
   let square = document.getElementById(`square-d1`);
+  whiteQueen.location = square;
   square.appendChild(whiteQueen.figureImage);
 }
 
 function initialBlackQueenPositions() {
   let blackQueen = new Queen("black", document.createElement("img"));
   let square = document.getElementById(`square-d8`);
+  blackQueen.location = square;
   square.appendChild(blackQueen.figureImage);
 }
 
 function initialWhiteKingPositions() {
   let whiteKing = new King("white", document.createElement("img"));
   let square = document.getElementById(`square-e1`);
+  whiteKing.location = square;
   square.appendChild(whiteKing.figureImage);
 }
 
 function initialBlackKingPositions() {
   let blackKing = new King("black", document.createElement("img"));
   let square = document.getElementById(`square-e8`);
+  blackKing.location = square;
   square.appendChild(blackKing.figureImage);
 }
 
