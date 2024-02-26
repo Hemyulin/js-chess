@@ -22,12 +22,12 @@ class Piece {
 
 class Pawn extends Piece {
   constructor(color, figureImage) {
-    super(type, color, figureImage);
+    super("pawn", color, figureImage);
 
-    this.type = pawn;
+    this.type = "pawn";
     this.color === "black"
-      ? (figureImage.src = "./assets/img/black_pawn")
-      : (figureImage.src = "./assets/img/white_pawn");
+      ? (this.figureImage.src = "./assets/img/black_pawn")
+      : (this.figureImage.src = "./assets/img/white_pawn");
   }
 }
 
