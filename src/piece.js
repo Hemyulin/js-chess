@@ -55,7 +55,7 @@ class Knight extends Piece {
   }
 }
 
-class bishop extends Piece {
+class Bishop extends Piece {
   constructor(color, figureImage) {
     super("bishop", color, figureImage);
 
