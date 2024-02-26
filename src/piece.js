@@ -1,9 +1,5 @@
 class Piece {
-  constructor(
-    type, // rook, bishop, etc.
-    color,
-    figureImage
-  ) {
+  constructor(type, color, figureImage) {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
     this.location = this.location; // square
@@ -12,6 +8,7 @@ class Piece {
 
     const imgObject = document.createElement("img");
     imgObject.classList = "figure-img";
+    imgObject.src = figureImage;
     this.figureImage = imgObject;
   }
   move() {
