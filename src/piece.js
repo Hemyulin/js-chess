@@ -32,36 +32,65 @@ class Pawn extends Piece {
   }
 }
 
-class Castle extends Piece {
-  constructor(type, color, figureImage) {
-    super(type, color, figureImage);
+class Rook extends Piece {
+  constructor(color, figureImage) {
+    super("rook", color, figureImage);
+
+    this.type = "castle";
+    this.color === "black"
+      ? (this.figureImage.src = "./assets/img/black_rook.png")
+      : (this.figureImage.src = "./assets/img/white_rook.png");
+
+    this.pointsWorth = 5;
   }
 }
 
 class Knight extends Piece {
-  constructor(type, color, figureImage) {
-    super(type, color, figureImage);
+  constructor(color, figureImage) {
+    super("knight", color, figureImage);
+
+    this.type = "knight";
+    this.color === "black"
+      ? (this.figureImage.src = "./assets/img/black_knight.png")
+      : (this.figureImage.src = "./assets/img/white_knight.png");
+
+    this.pointsWorth = 3;
   }
 }
 
-class Rook extends Piece {
-  constructor(type, color, figureImage) {
-    super(type, color, figureImage);
+class bishop extends Piece {
+  constructor(color, figureImage) {
+    super("bishop", color, figureImage);
+
+    this.type = "bishop";
+    this.color === "black"
+      ? (this.figureImage.src = "./assets/img/black_bishop.png")
+      : (this.figureImage.src = "./assets/img/white_bishop.png");
+
+    this.pointsWorth = 3;
   }
 }
 
 class Queen extends Piece {
-  constructor(type, color, figureImage) {
-    super(type, color, figureImage);
+  constructor(color, figureImage) {
+    super("queen", color, figureImage);
+
+    this.type = "queen";
+    this.color === "black"
+      ? (this.figureImage.src = "./assets/img/black_queen.png")
+      : (this.figureImage.src = "./assets/img/white_queen.png");
+
+    this.pointsWorth = 9;
   }
 }
 
 class King extends Piece {
-  constructor(type, color, figureImage) {
-    super(type, color, figureImage);
+  constructor(color, figureImage) {
+    super("king", color, figureImage);
+
+    this.type = "king";
+    this.color === "black"
+      ? (this.figureImage.src = "./assets/img/black_king.png")
+      : (this.figureImage.src = "./assets/img/white_king.png");
   }
 }
-
-// TODO: ADD REST OF PIECES
-
-const whatever = [1, 2, 3, 4, 5, 6, 7, 8];
