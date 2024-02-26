@@ -20,6 +20,11 @@ body {
   height: 90px;
 }
 
+/* Checking if can select square by id 
+ #square-c7 {
+  background-color: red;
+} */
+
 .light {
   background-color: #f0d9b5;
 }
