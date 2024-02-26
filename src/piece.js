@@ -2,8 +2,9 @@ class Piece {
   constructor(type, color, figureImage) {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
-    this.location = this.location; // square id
-    this.isFirstMove = this.isFirstMove; // for castling, pawn 2 square and en passant
+    this.location = ""; // square id
+    this.isFirstMove = true; // for castling, pawn 2 square and en passant
+    // this.addEventlistener = ;
 
     const imgObject = document.createElement("img");
     imgObject.classList = "figure-img";

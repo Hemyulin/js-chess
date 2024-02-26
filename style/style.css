@@ -18,10 +18,13 @@ body {
 .square {
   width: 90px;
   height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Checking if can select square by id 
- #square-c7 {
+/* Checking if can select square by id  */
+/* #square-c7 {
   background-color: red;
 } */
 
