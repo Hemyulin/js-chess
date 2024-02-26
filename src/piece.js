@@ -7,7 +7,6 @@ class Piece {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
     this.location = this.location; // square
-    this.pointsWorth = pointsWorth; // <-- UNSURE
     this.isFirstMove = this.isFirstMove; // for castling, pawn 2 square and en passant
     this.isChecked = this.isChecked; // for king
 
@@ -26,8 +25,10 @@ class Pawn extends Piece {
 
     this.type = "pawn";
     this.color === "black"
-      ? (this.figureImage.src = "./assets/img/black_pawn")
-      : (this.figureImage.src = "./assets/img/white_pawn");
+      ? (this.figureImage.src = "./assets/img/black_pawn.png")
+      : (this.figureImage.src = "./assets/img/white_pawn.png");
+
+    this.pointsWorth = 1;
   }
 }
 

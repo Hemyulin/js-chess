@@ -24,3 +24,9 @@ function createChessBoard() {
 createChessBoard();
 
 // TODO: ADD WHO'S TURN
+
+let whitePawns = Array(8)
+  .fill()
+  .map(() => new Pawn("white", document.createElement("img")));
+
+console.log(whitePawns);
