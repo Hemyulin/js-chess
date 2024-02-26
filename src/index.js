@@ -31,10 +31,12 @@ function initialBoardPositions() {
     .fill()
     .map(() => new Pawn("white", document.createElement("img")));
 
-  let counter = 1;
+  let counter = 97;
 
   whitePawns.forEach((element) => {
-    let square = document.getElementById(`square-c${counter}`);
+    let square = document.getElementById(
+      `square-${String.fromCharCode(counter)}2`
+    );
     square.appendChild(element.figureImage);
     counter += 1;
   });
