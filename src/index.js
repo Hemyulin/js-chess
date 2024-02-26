@@ -9,7 +9,7 @@ function createChessBoard() {
     for (let column = 0; column < 8; column++) {
       const square = document.createElement("div");
       square.className = "square";
-      square.innerText = `${row}`;
+      square.innerText = `col${column + 1} row${row + 1}`;
       if ((row + column) % 2 === 0) {
         square.classList.add("light");
       } else {
