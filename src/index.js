@@ -27,7 +27,7 @@ function createChessBoard() {
 
 createChessBoard();
 
-// NEW
+// NEW, REFORMATED AND SO MUCH MORE AWESOME WAY TO WRITE THIS
 
 function createPiece(type, color) {
   return new type(color, document.createElement("img"));
