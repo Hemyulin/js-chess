@@ -7,6 +7,7 @@ class Button {
     this.buttonElement.innerText = this.text;
     this.buttonElement.addEventListener("click", () => {
       console.log(this.message);
+      endGame(this.message);
     });
   }
 }
@@ -27,5 +28,14 @@ class WinButton extends Button {
 class LoseButton extends Button {
   constructor(text, elementId) {
     super(text, elementId, "Lose button clicked");
+  }
+}
+class PlayAgainButton extends Button {
+  constructor(text, elementId) {
+    super(text, elementId, "Play again button clicked");
+    this.buttonElement.addEventListener("click", () => {
+      console.log(this.message);
+      restartGame();
+    });
   }
 }

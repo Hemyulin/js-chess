@@ -25,12 +25,11 @@ function startGame() {
 
     const buttonsDiv = document.createElement("div");
     buttonsDiv.style.display = "flex";
-    buttonsDiv.style.justifyContent = "center";
 
-    const winButton = new WinButton("WIN", "winButtonId");
+    const winButton = new WinButton("CLICK TO WIN", "winButtonId");
     buttonsDiv.appendChild(winButton.buttonElement);
 
-    const loseButton = new LoseButton("LOSE", "loseButtonId");
+    const loseButton = new LoseButton("CLICK TO LOSE", "loseButtonId");
     buttonsDiv.appendChild(loseButton.buttonElement);
 
     document.body.appendChild(buttonsDiv);
@@ -40,7 +39,7 @@ function startGame() {
 function createChessBoard() {
   const board = document.createElement("div");
   board.className = "chess-board";
-  board.style.display = "none"; // <=
+  board.style.display = "none";
 
   for (let row = 8; row > 0; row--) {
     const rowDiv = document.createElement("div");
@@ -141,219 +140,48 @@ placePieces(blackQueen, initialPositions.blackQueen);
 placePieces(whiteKing, initialPositions.whiteKing);
 placePieces(blackKing, initialPositions.blackKing);
 
-function endScreen() {
+function endScreen(message) {
   const endScreenDiv = document.createElement("div");
   endScreenDiv.className = "end-screen";
   endScreenDiv.style.display = "none";
 
   const h1Title = document.createElement("h1");
-  h1Title.innerText = "GAME OVER";
+  h1Title.innerText = message;
   endScreenDiv.appendChild(h1Title);
 
-  const playAgainButton = document.createElement("button");
-  playAgainButton.innerText = "PLAY AGAIN";
-  playAgainButton.addEventListener("click", () => startGame());
-  endScreenDiv.appendChild(playAgainButton);
+  const playAgainButton = new PlayAgainButton(
+    "PLAY AGAIN",
+    "playAgainButtonId"
+  );
+
+  endScreenDiv.appendChild(playAgainButton.buttonElement);
   document.body.appendChild(endScreenDiv);
 }
 
 endScreen();
 
 function endGame() {
-  console.log("You lost!");
+  const endScreenDiv = document.querySelector(".end-screen");
+  const boardDiv = document.querySelector(".chess-board");
+  const winButtonDiv = document.getElementById("winButtonId");
+  const loseButtonDiv = document.getElementById("loseButtonId");
+  const playAgainButtonDiv = document.getElementById("playAgainButtonId");
+  if (endScreenDiv && boardDiv) {
+    endScreenDiv.style.display = "flex";
+    boardDiv.style.display = "none";
+    if (winButtonDiv) winButtonDiv.style.display = "none";
+    if (loseButtonDiv) loseButtonDiv.style.display = "none";
+    if (playAgainButtonDiv) playAgainButtonDiv.style.display = "flex";
+  }
 }
 
-// OLD AND BAD AND TOTALLY WET CODE
-// IT STAYS HERE SO I CAN PRESENT IT TO THE CLASS
-// AND LAUGH AT THE N00BNESS
-
-// function initialWhitePawnPositions() {
-//   let whitePawns = Array(8)
-//     .fill()
-//     .map(() => new Pawn("white", document.createElement("img")));
-
-//   let counter = 97;
-
-//   whitePawns.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}2`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 1;
-//   });
-// }
-
-// function initialBlackPawnPositions() {
-//   let whitePawns = Array(8)
-//     .fill()
-//     .map(() => new Pawn("black", document.createElement("img")));
-
-//   let counter = 97;
-
-//   whitePawns.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}7`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 1;
-//   });
-// }
-
-// function initialWhiteRookPositions() {
-//   let whiteRook = Array(2)
-//     .fill()
-//     .map(() => new Rook("white", document.createElement("img")));
-
-//   let counter = 97;
-
-//   whiteRook.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}1`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 7;
-//   });
-// }
-
-// function initialBlackRookPositions() {
-//   let blackRook = Array(2)
-//     .fill()
-//     .map(() => new Rook("black", document.createElement("img")));
-
-//   let counter = 97;
-
-//   blackRook.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}8`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 7;
-//   });
-// }
-
-// function initialWhiteKightPositions() {
-//   let whiteKnight = Array(2)
-//     .fill()
-//     .map(() => new Knight("white", document.createElement("img")));
-
-//   let counter = 98;
-
-//   whiteKnight.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}1`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 5;
-//   });
-// }
-
-// function initialBlackKightPositions() {
-//   let blackKnight = Array(2)
-//     .fill()
-//     .map(() => new Knight("black", document.createElement("img")));
-
-//   let counter = 98;
-
-//   blackKnight.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}8`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 5;
-//   });
-// }
-
-// function initialWhiteBishopPositions() {
-//   let whiteBishop = Array(2)
-//     .fill()
-//     .map(() => new Bishop("white", document.createElement("img")));
-
-//   let counter = 99;
-
-//   whiteBishop.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}1`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 3;
-//   });
-// }
-
-// function initialBlackBishopPositions() {
-//   let blackBishop = Array(2)
-//     .fill()
-//     .map(() => new Bishop("black", document.createElement("img")));
-
-//   let counter = 99;
-
-//   blackBishop.forEach((element) => {
-//     let square = document.getElementById(
-//       `square-${String.fromCharCode(counter)}8`
-//     );
-//     element.location = square;
-//     square.appendChild(element.figureImage);
-//     counter += 3;
-//   });
-// }
-
-// function initialWhiteQueenPositions() {
-//   let whiteQueen = new Queen("white", document.createElement("img"));
-//   let square = document.getElementById(`square-d1`);
-//   whiteQueen.location = square;
-//   square.appendChild(whiteQueen.figureImage);
-// }
-
-// function initialBlackQueenPositions() {
-//   let blackQueen = new Queen("black", document.createElement("img"));
-//   let square = document.getElementById(`square-d8`);
-//   blackQueen.location = square;
-//   square.appendChild(blackQueen.figureImage);
-// }
-
-// function initialWhiteKingPositions() {
-//   let whiteKing = new King("white", document.createElement("img"));
-//   let square = document.getElementById(`square-e1`);
-//   whiteKing.location = square;
-//   square.appendChild(whiteKing.figureImage);
-// }
-
-// function initialBlackKingPositions() {
-//   let blackKing = new King("black", document.createElement("img"));
-//   let square = document.getElementById(`square-e8`);
-//   blackKing.location = square;
-//   square.appendChild(blackKing.figureImage);
-// }
-
-// function initialWhitePositions() {
-//   initialWhitePawnPositions();
-//   initialWhiteRookPositions();
-//   initialWhiteKightPositions();
-//   initialWhiteBishopPositions();
-//   initialWhiteQueenPositions();
-//   initialWhiteKingPositions();
-// }
-
-// function initialBlackPositions() {
-//   initialBlackPawnPositions();
-//   initialBlackRookPositions();
-//   initialBlackKightPositions();
-//   initialBlackBishopPositions();
-//   initialBlackQueenPositions();
-//   initialBlackKingPositions();
-// }
-
-// function initialBoardPositions() {
-//   initialWhitePositions();
-//   initialBlackPositions();
-// }
-
-// initialBoardPositions();
-
-// TODO: ADD WHO'S TURN
+function restartGame() {
+  const endScreenDiv = document.querySelector(".end-screen");
+  const boardDiv = document.querySelector(".chess-board");
+  const playAgainButtonDiv = document.getElementById("playAgainButtonId");
+  if (endScreenDiv && boardDiv) {
+    endScreenDiv.style.display = "none";
+    boardDiv.style.display = "flex";
+    if (playAgainButtonDiv) playAgainButtonDiv.style.display = "none";
+  }
+}
