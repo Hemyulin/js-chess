@@ -71,8 +71,8 @@ createChessBoard();
 
 // NEW, REFORMATED AND SO MUCH MORE AWESOME WAY TO WRITE THIS
 
-function createPiece(type, color) {
-  return new type(color, document.createElement("img"));
+function createPiece(type, color, id) {
+  return new type(color, document.createElement("img"), id);
 }
 
 function placePieces(pieces, positions) {

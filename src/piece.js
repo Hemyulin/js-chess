@@ -1,9 +1,10 @@
 class Piece {
-  constructor(type, color, figureImage) {
+  constructor(type, color, figureImage, id) {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
     this.location = ""; // square id
     this.isFirstMove = true; // for castling, pawn 2 square and en passant
+    this.id = id;
     // this.addEventlistener = ;
 
     const imgObject = document.createElement("img");
@@ -13,6 +14,9 @@ class Piece {
   }
   move() {
     //TODO: DEFINE MOVE
+  }
+  capture() {
+    // TODO: DEFINE CAPTURE
   }
 }
 
