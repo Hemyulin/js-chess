@@ -5,6 +5,11 @@ body {
   justify-content: center;
 }
 
+.welcome-screen {
+  display: flex;
+  flex-direction: column;
+}
+
 .chess-board {
   display: flex;
   flex-direction: column;
