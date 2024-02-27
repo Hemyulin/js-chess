@@ -1,7 +1,7 @@
 function welcomeScreen() {
   const welcomeScreenDiv = document.createElement("div");
   welcomeScreenDiv.className = "welcome-screen";
-  welcomeScreenDiv.style.visibility = "visible";
+  welcomeScreenDiv.style.display = "flex";
 
   const h1Title = document.createElement("h1");
   h1Title.innerText = "LET'S CHESS";
@@ -20,15 +20,27 @@ function startGame() {
   const welcomeScreenDiv = document.querySelector(".welcome-screen");
   const boardDiv = document.querySelector(".chess-board");
   if (welcomeScreenDiv && boardDiv) {
-    welcomeScreenDiv.style.visibility = "hidden";
-    boardDiv.style.visibility = "visible";
+    welcomeScreenDiv.style.display = "none";
+    boardDiv.style.display = "flex";
+
+    const buttonsDiv = document.createElement("div");
+    buttonsDiv.style.display = "flex";
+    buttonsDiv.style.justifyContent = "center";
+
+    const winButton = new WinButton("WIN", "winButtonId");
+    buttonsDiv.appendChild(winButton.buttonElement);
+
+    const loseButton = new LoseButton("LOSE", "loseButtonId");
+    buttonsDiv.appendChild(loseButton.buttonElement);
+
+    document.body.appendChild(buttonsDiv);
   }
 }
 
 function createChessBoard() {
   const board = document.createElement("div");
   board.className = "chess-board";
-  board.style.visibility = "hidden"; // <=
+  board.style.display = "none"; // <=
 
   for (let row = 8; row > 0; row--) {
     const rowDiv = document.createElement("div");
@@ -129,13 +141,27 @@ placePieces(blackQueen, initialPositions.blackQueen);
 placePieces(whiteKing, initialPositions.whiteKing);
 placePieces(blackKing, initialPositions.blackKing);
 
-function endButtons() {
-  endButtons = document.createElement("button");
+function endScreen() {
+  const endScreenDiv = document.createElement("div");
+  endScreenDiv.className = "end-screen";
+  endScreenDiv.style.display = "none";
+
+  const h1Title = document.createElement("h1");
+  h1Title.innerText = "GAME OVER";
+  endScreenDiv.appendChild(h1Title);
+
+  const playAgainButton = document.createElement("button");
+  playAgainButton.innerText = "PLAY AGAIN";
+  playAgainButton.addEventListener("click", () => startGame());
+  endScreenDiv.appendChild(playAgainButton);
+  document.body.appendChild(endScreenDiv);
 }
 
-function winGame() {}
+endScreen();
 
-function loseGame() {}
+function endGame() {
+  console.log("You lost!");
+}
 
 // OLD AND BAD AND TOTALLY WET CODE
 // IT STAYS HERE SO I CAN PRESENT IT TO THE CLASS

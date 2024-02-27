@@ -1,12 +1,31 @@
 class Button {
-  constructor() {
+  constructor(text, elementId, message) {
     this.text = text;
-    this.onClick = addEventListener("click", () => {});
+    this.elementId = elementId;
+    this.message = message;
+    this.buttonElement = document.createElement("button");
+    this.buttonElement.innerText = this.text;
+    this.buttonElement.addEventListener("click", () => {
+      console.log(this.message);
+    });
   }
 }
 
-class StartButton extends Button {}
+// Currently StartButton isn't being used as I don't have the time to change the code to use it
+class StartButton extends Button {
+  constructor(text, elementId) {
+    super(text, elementId, "Start button clicked");
+  }
+}
 
-class WinButton extends Button {}
+class WinButton extends Button {
+  constructor(text, elementId) {
+    super(text, elementId, "Win button clicked");
+  }
+}
 
-class LoseButton extends Button {}
+class LoseButton extends Button {
+  constructor(text, elementId) {
+    super(text, elementId, "Lose button clicked");
+  }
+}
