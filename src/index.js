@@ -53,6 +53,9 @@ function createChessBoard() {
       square.className = "square";
       // assign each square a unique id
       square.id = `square-${String.fromCharCode(column + 97)}${row}`;
+      square.addEventListener("click", (square) => {
+        console.log(square.target);
+      });
 
       if ((row + column) % 2 === 0) {
         square.classList.add("light");
@@ -71,8 +74,8 @@ createChessBoard();
 
 // NEW, REFORMATED AND SO MUCH MORE AWESOME WAY TO WRITE THIS
 
-function createPiece(type, color, id) {
-  return new type(color, document.createElement("img"), id);
+function createPiece(type, color, location) {
+  return new type(color, document.createElement("img"), location);
 }
 
 function placePieces(pieces, positions) {
@@ -101,34 +104,38 @@ const initialPositions = {
   blackKing: ["square-e8"],
 };
 
-const whitePawns = Array(8)
-  .fill()
-  .map(() => createPiece(Pawn, "white"));
-const blackPawns = Array(8)
-  .fill()
-  .map(() => createPiece(Pawn, "black"));
-const whiteRooks = Array(2)
-  .fill()
-  .map(() => createPiece(Rook, "white"));
-const blackRooks = Array(2)
-  .fill()
-  .map(() => createPiece(Rook, "black"));
-const whiteKnights = Array(2)
-  .fill()
-  .map(() => createPiece(Knight, "white"));
-const blackKnights = Array(2)
-  .fill()
-  .map(() => createPiece(Knight, "black"));
-const whiteBishops = Array(2)
-  .fill()
-  .map(() => createPiece(Bishop, "white"));
-const blackBishops = Array(2)
-  .fill()
-  .map(() => createPiece(Bishop, "black"));
-const whiteQueen = [createPiece(Queen, "white")];
-const blackQueen = [createPiece(Queen, "black")];
-const whiteKing = [createPiece(King, "white")];
-const blackKing = [createPiece(King, "black")];
+const whitePawns = initialPositions.whitePawns.map((location) =>
+  createPiece(Pawn, "white", location)
+);
+const blackPawns = initialPositions.blackPawns.map((location) =>
+  createPiece(Pawn, "black", location)
+);
+const whiteRooks = initialPositions.whiteRooks.map((location) =>
+  createPiece(Rook, "white", location)
+);
+const blackRooks = initialPositions.blackRooks.map((location) =>
+  createPiece(Rook, "black", location)
+);
+const whiteKnights = initialPositions.whiteKnights.map((location) =>
+  createPiece(Knight, "white", location)
+);
+const blackKnights = initialPositions.blackKnights.map((location) =>
+  createPiece(Knight, "black", location)
+);
+const whiteBishops = initialPositions.whiteBishops.map((location) =>
+  createPiece(Bishop, "white", location)
+);
+const blackBishops = initialPositions.blackBishops.map((location) =>
+  createPiece(Bishop, "black", location)
+);
+const whiteQueen = [
+  createPiece(Queen, "white", initialPositions.whiteQueen[0]),
+];
+const blackQueen = [
+  createPiece(Queen, "black", initialPositions.blackQueen[0]),
+];
+const whiteKing = [createPiece(King, "white", initialPositions.whiteKing[0])];
+const blackKing = [createPiece(King, "black", initialPositions.blackKing[0])];
 
 placePieces(whitePawns, initialPositions.whitePawns);
 placePieces(blackPawns, initialPositions.blackPawns);

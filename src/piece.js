@@ -1,16 +1,18 @@
 class Piece {
-  constructor(type, color, figureImage, id) {
+  constructor(type, color, figureImage, location) {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
-    this.location = ""; // square id
-    this.isFirstMove = true; // for castling, pawn 2 square and en passant
-    this.id = id;
-    // this.addEventlistener = ;
+    this.location = location; // square id
 
     const imgObject = document.createElement("img");
     imgObject.classList = "figure-img";
     imgObject.src = figureImage;
     this.figureImage = imgObject;
+
+    this.figureImage.addEventListener("click", (e) => {
+      e.stopPropagation();
+      console.log(e.target, this.location);
+    });
   }
   move() {
     //TODO: DEFINE MOVE
@@ -21,10 +23,11 @@ class Piece {
 }
 
 class Pawn extends Piece {
-  constructor(color, figureImage) {
-    super("pawn", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("pawn", color, figureImage, location);
 
     this.type = "pawn";
+    this.isFirstMove = true;
     this.color === "black"
       ? (this.figureImage.src = "./assets/img/black_pawn.png")
       : (this.figureImage.src = "./assets/img/white_pawn.png");
@@ -34,8 +37,8 @@ class Pawn extends Piece {
 }
 
 class Rook extends Piece {
-  constructor(color, figureImage) {
-    super("rook", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("rook", color, figureImage, location);
 
     this.type = "castle";
     this.color === "black"
@@ -47,8 +50,8 @@ class Rook extends Piece {
 }
 
 class Knight extends Piece {
-  constructor(color, figureImage) {
-    super("knight", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("knight", color, figureImage, location);
 
     this.type = "knight";
     this.color === "black"
@@ -60,8 +63,8 @@ class Knight extends Piece {
 }
 
 class Bishop extends Piece {
-  constructor(color, figureImage) {
-    super("bishop", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("bishop", color, figureImage, location);
 
     this.type = "bishop";
     this.color === "black"
@@ -73,8 +76,8 @@ class Bishop extends Piece {
 }
 
 class Queen extends Piece {
-  constructor(color, figureImage) {
-    super("queen", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("queen", color, figureImage, location);
 
     this.type = "queen";
     this.color === "black"
@@ -86,9 +89,10 @@ class Queen extends Piece {
 }
 
 class King extends Piece {
-  constructor(color, figureImage) {
-    super("king", color, figureImage);
+  constructor(color, figureImage, location) {
+    super("king", color, figureImage, location);
 
+    this.isFirstMove = true;
     this.isChecked = this.isChecked;
     this.type = "king";
     this.color === "black"
