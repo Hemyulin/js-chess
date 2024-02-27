@@ -1,6 +1,23 @@
+function welcomeScreen() {
+  const welcomeScreen = document.createElement("div");
+  welcomeScreen.className = "welcome-screen";
+  welcomeScreen.style.visibility = "visible";
+
+  const h1Title = document.createElement("h1");
+  h1Title.innerText = "LET'S CHESS";
+  welcomeScreen.appendChild(h1Title);
+
+  const startButton = document.createElement("button");
+  startButton.innerText = "START NOW";
+  document.body.appendChild(welcomeScreen);
+}
+
+welcomeScreen();
+
 function createChessBoard() {
   const board = document.createElement("div");
   board.className = "chess-board";
+  board.style.visibility = "hidden"; // <=
 
   for (let row = 8; row > 0; row--) {
     const rowDiv = document.createElement("div");
