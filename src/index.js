@@ -1,18 +1,29 @@
 function welcomeScreen() {
-  const welcomeScreen = document.createElement("div");
-  welcomeScreen.className = "welcome-screen";
-  welcomeScreen.style.visibility = "visible";
+  const welcomeScreenDiv = document.createElement("div");
+  welcomeScreenDiv.className = "welcome-screen";
+  welcomeScreenDiv.style.visibility = "visible";
 
   const h1Title = document.createElement("h1");
   h1Title.innerText = "LET'S CHESS";
-  welcomeScreen.appendChild(h1Title);
+  welcomeScreenDiv.appendChild(h1Title);
 
   const startButton = document.createElement("button");
   startButton.innerText = "START NOW";
-  document.body.appendChild(welcomeScreen);
+  startButton.addEventListener("click", () => startGame());
+  welcomeScreenDiv.appendChild(startButton);
+  document.body.appendChild(welcomeScreenDiv);
 }
 
 welcomeScreen();
+
+function startGame() {
+  const welcomeScreenDiv = document.querySelector(".welcome-screen");
+  const boardDiv = document.querySelector(".chess-board");
+  if (welcomeScreenDiv && boardDiv) {
+    welcomeScreenDiv.style.visibility = "hidden";
+    boardDiv.style.visibility = "visible";
+  }
+}
 
 function createChessBoard() {
   const board = document.createElement("div");
