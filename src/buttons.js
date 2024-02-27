@@ -21,13 +21,13 @@ class StartButton extends Button {
 
 class WinButton extends Button {
   constructor(text, elementId) {
-    super(text, elementId, "Win button clicked");
+    super(text, elementId, "You win!!!!");
   }
 }
 
 class LoseButton extends Button {
   constructor(text, elementId) {
-    super(text, elementId, "Lose button clicked");
+    super(text, elementId, "You lose!!!!");
   }
 }
 class PlayAgainButton extends Button {
