@@ -129,6 +129,14 @@ placePieces(blackQueen, initialPositions.blackQueen);
 placePieces(whiteKing, initialPositions.whiteKing);
 placePieces(blackKing, initialPositions.blackKing);
 
+function endButtons() {
+  endButtons = document.createElement("button");
+}
+
+function winGame() {}
+
+function loseGame() {}
+
 // OLD AND BAD AND TOTALLY WET CODE
 // IT STAYS HERE SO I CAN PRESENT IT TO THE CLASS
 // AND LAUGH AT THE N00BNESS
