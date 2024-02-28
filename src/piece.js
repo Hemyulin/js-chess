@@ -17,8 +17,15 @@ class Piece {
       console.log("Selected Piece...", selectedPiece);
     });
   }
-  move() {
-    //TODO: DEFINE MOVE
+  move(newLocation) {
+    const oldSquare = document.getElementById(this.location);
+    this.location = newLocation;
+    const newSquare = document.getElementById(newLocation);
+
+    oldSquare.removeChild(this.figureImage);
+    newSquare.appendChild(this.figureImage);
+
+    this.location = newLocation;
   }
   capture() {
     // TODO: DEFINE CAPTURE

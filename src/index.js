@@ -53,8 +53,13 @@ function createChessBoard() {
       square.className = "square";
       // assign each square a unique id
       square.id = `square-${String.fromCharCode(column + 97)}${row}`;
-      square.addEventListener("click", (square) => {
-        console.log(square.target);
+
+      square.addEventListener("click", (e) => {
+        if (selectedPiece) {
+          selectedPiece.move(square.id);
+          selectedPiece = null;
+        }
+        console.log(e.target);
       });
 
       if ((row + column) % 2 === 0) {
