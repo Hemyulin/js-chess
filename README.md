@@ -2,6 +2,8 @@
 
 This project is a simple implementation of a chess game using JavaScript.
 
+Play it here https://hemyulin.github.io/js-chess/
+
 # Screenshot #1
 
 ![Game Screenshot 1](assets/img/game_screenshot1.png)
