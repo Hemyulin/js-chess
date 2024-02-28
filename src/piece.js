@@ -11,13 +11,16 @@ class Piece {
     imgObject.classList = "figure-img";
     imgObject.src = figureImage;
     this.figureImage = imgObject;
+    this.figureImage.pieceRef = this;
 
     this.figureImage.addEventListener("click", (e) => {
       e.stopPropagation();
       if (selectedPiece && selectedPiece.color === this.color) {
         console.log("SAME PIECE COLOR");
+        selectedPiece = null;
       } else if (selectedPiece) {
-        console.log("PIECE SELECTED AND READY TO KILL");
+        console.log("PIECE SELECTED AND READY TO MOVE OR CAPTURE");
+        selectedPiece.move(this.location);
       } else {
         selectedPiece = this;
       }
@@ -25,17 +28,25 @@ class Piece {
   }
   move(newLocation) {
     const oldSquare = document.getElementById(this.location);
-    this.location = newLocation;
     const newSquare = document.getElementById(newLocation);
 
-    if (newSquare.childNodes.length > 1) {
-      console.log("THIS IS NOT EMPTY");
-    } else {
-      oldSquare.removeChild(this.figureImage);
-      newSquare.appendChild(this.figureImage);
-
-      this.location = newLocation;
+    if (newSquare && newSquare.childNodes.length > 0) {
+      for (let node of newSquare.childNodes) {
+        if (node.pieceRef && node.pieceRef.color !== this.color) {
+          console.log("CAPTURING PIECE");
+          node.pieceRef.isCaptured = true;
+          newSquare.removeChild(node);
+          break;
+        }
+      }
     }
+
+    if (oldSquare.contains(this.figureImage)) {
+      oldSquare.removeChild(this.figureImage);
+    }
+    newSquare.appendChild(this.figureImage);
+    this.location = newLocation;
+    selectedPiece = null;
   }
 }
 

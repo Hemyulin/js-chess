@@ -58,12 +58,7 @@ function createChessBoard() {
         if (selectedPiece) {
           selectedPiece.move(square.id);
 
-          if (square.childNodes.length > 1) {
-            console.log(square.id);
-            console.log(square.childNodes);
-          } else {
-            selectedPiece = null;
-          }
+          selectedPiece = null;
         }
         console.log(e.target);
       });
