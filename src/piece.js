@@ -30,15 +30,34 @@ class Piece {
     const oldSquare = document.getElementById(this.location);
     const newSquare = document.getElementById(newLocation);
 
+    let capturedPiece = null;
+
     if (newSquare && newSquare.childNodes.length > 0) {
       for (let node of newSquare.childNodes) {
         if (node.pieceRef && node.pieceRef.color !== this.color) {
           console.log("CAPTURING PIECE");
           node.pieceRef.isCaptured = true;
+          capturedPiece = node.pieceRef;
           newSquare.removeChild(node);
           break;
         }
       }
+    }
+
+    if (
+      capturedPiece &&
+      capturedPiece.type === "king" &&
+      capturedPiece.color === "white"
+    ) {
+      console.log("GAME OVER MAN GAME OVER");
+      endGame("BLACK WINS!");
+    } else if (
+      capturedPiece &&
+      capturedPiece.type === "king" &&
+      capturedPiece.color === "black"
+    ) {
+      console.log("GAME OVER MAN GAME OVER");
+      endGame("WHITE WINS!");
     }
 
     if (oldSquare.contains(this.figureImage)) {
