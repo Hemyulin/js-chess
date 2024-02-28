@@ -1,3 +1,5 @@
+let selectedPiece = null;
+
 class Piece {
   constructor(type, color, figureImage, location) {
     this.type = type; // rook, bishop, etc.
@@ -11,7 +13,8 @@ class Piece {
 
     this.figureImage.addEventListener("click", (e) => {
       e.stopPropagation();
-      console.log(e.target, this.location);
+      selectedPiece = this;
+      console.log("Selected Piece...", selectedPiece);
     });
   }
   move() {

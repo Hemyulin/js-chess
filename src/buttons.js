@@ -6,6 +6,7 @@ class Button {
     this.buttonElement = document.createElement("button");
     this.buttonElement.innerText = this.text;
     this.buttonElement.addEventListener("click", () => {
+      selectedPiece = this;
       console.log(this.message);
       endGame(this.message);
     });
