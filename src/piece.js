@@ -15,14 +15,19 @@ class Piece {
 
     this.figureImage.addEventListener("click", (e) => {
       e.stopPropagation();
-      if (selectedPiece && selectedPiece.color === this.color) {
-        console.log("SAME PIECE COLOR");
-        selectedPiece = null;
-      } else if (selectedPiece) {
-        console.log("PIECE SELECTED AND READY TO MOVE OR CAPTURE");
-        selectedPiece.move(this.location);
+      if (selectedPiece) {
+        if (selectedPiece.color === this.color) {
+          console.log("SAME PIECE COLOR");
+
+          selectedPiece.figureImage.classList.remove("selected");
+          selectedPiece = null;
+        } else {
+          selectedPiece.figureImage.classList.remove("selected"); //
+          selectedPiece.move(this.location);
+        }
       } else {
         selectedPiece = this;
+        this.figureImage.classList.add("selected");
       }
     });
   }
@@ -42,6 +47,9 @@ class Piece {
           break;
         }
       }
+    }
+    if (this.figureImage.classList.contains("selected")) {
+      this.figureImage.classList.remove("selected");
     }
 
     if (

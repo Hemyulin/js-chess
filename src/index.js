@@ -165,7 +165,6 @@ function endScreen() {
   messageElement.className = "end-screen-message";
   endScreenDiv.appendChild(messageElement);
 
-  const h1Title = document.createElement("h1");
   endScreenDiv.appendChild(messageElement);
 
   const playAgainButton = new PlayAgainButton(
