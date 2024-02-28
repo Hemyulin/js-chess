@@ -21,20 +21,19 @@ class StartButton extends Button {
 
 class WinButton extends Button {
   constructor(text, elementId) {
-    super(text, elementId, "You win!!!!");
+    super(text, elementId, "YOU WIN!!!!");
   }
 }
 
 class LoseButton extends Button {
   constructor(text, elementId) {
-    super(text, elementId, "You lose!!!!");
+    super(text, elementId, "YOU LOSE!!!!");
   }
 }
 class PlayAgainButton extends Button {
   constructor(text, elementId) {
-    super(text, elementId, "Play again button clicked");
+    super(text, elementId, "LOADING...");
     this.buttonElement.addEventListener("click", () => {
-      console.log(this.message);
       restartGame();
     });
   }

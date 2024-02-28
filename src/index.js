@@ -155,9 +155,12 @@ function endScreen() {
   endScreenDiv.className = "end-screen";
   endScreenDiv.style.display = "none";
 
+  const messageElement = document.createElement("h1");
+  messageElement.className = "end-screen-message";
+  endScreenDiv.appendChild(messageElement);
+
   const h1Title = document.createElement("h1");
-  h1Title.innerText = "GAME OVER";
-  endScreenDiv.appendChild(h1Title);
+  endScreenDiv.appendChild(messageElement);
 
   const playAgainButton = new PlayAgainButton(
     "PLAY AGAIN",
@@ -170,13 +173,21 @@ function endScreen() {
 
 endScreen();
 
-function endGame() {
+function endGame(message) {
   const endScreenDiv = document.querySelector(".end-screen");
+  const messageElement = endScreenDiv.querySelector(".end-screen-message");
   const boardDiv = document.querySelector(".chess-board");
   const winButtonDiv = document.getElementById("winButtonId");
   const loseButtonDiv = document.getElementById("loseButtonId");
   const playAgainButtonDiv = document.getElementById("playAgainButtonId");
+  if (messageElement) {
+    messageElement.innerText = message;
+  }
+
   if (endScreenDiv && boardDiv) {
+    if (messageElement) {
+      messageElement.innerText = message;
+    }
     endScreenDiv.style.display = "flex";
     boardDiv.style.display = "none";
     if (winButtonDiv) winButtonDiv.style.display = "none";
