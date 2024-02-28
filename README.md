@@ -2,7 +2,11 @@
 
 This project is a simple implementation of a chess game using JavaScript.
 
+# Screenshot #1
+
 ![Game Screenshot 1](assets/img/game_screenshot1.png)
+
+# Screenshot #2
 
 ![Game Screenshot 2](assets/img/game_screenshot2.png)
 
