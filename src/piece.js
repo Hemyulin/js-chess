@@ -5,6 +5,7 @@ class Piece {
     this.type = type; // rook, bishop, etc.
     this.color = color; // black or white
     this.location = location; // square id
+    this.isCaptured = false;
 
     const imgObject = document.createElement("img");
     imgObject.classList = "figure-img";
@@ -13,8 +14,13 @@ class Piece {
 
     this.figureImage.addEventListener("click", (e) => {
       e.stopPropagation();
-      selectedPiece = this;
-      console.log("Selected Piece...", selectedPiece);
+      if (selectedPiece && selectedPiece.color === this.color) {
+        console.log("SAME PIECE COLOR");
+      } else if (selectedPiece) {
+        console.log("PIECE SELECTED AND READY TO KILL");
+      } else {
+        selectedPiece = this;
+      }
     });
   }
   move(newLocation) {
@@ -22,10 +28,15 @@ class Piece {
     this.location = newLocation;
     const newSquare = document.getElementById(newLocation);
 
-    oldSquare.removeChild(this.figureImage);
-    newSquare.appendChild(this.figureImage);
+    if (newSquare.childNodes.length > 1) {
+      console.log(newSquare.childNodes);
+      console.log("THIS IS NOT EMPTY");
+    } else {
+      oldSquare.removeChild(this.figureImage);
+      newSquare.appendChild(this.figureImage);
 
-    this.location = newLocation;
+      this.location = newLocation;
+    }
   }
   capture() {
     // TODO: DEFINE CAPTURE

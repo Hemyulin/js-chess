@@ -57,7 +57,13 @@ function createChessBoard() {
       square.addEventListener("click", (e) => {
         if (selectedPiece) {
           selectedPiece.move(square.id);
-          selectedPiece = null;
+
+          if (square.childNodes.length > 1) {
+            console.log(square.id);
+            console.log(square.childNodes);
+          } else {
+            selectedPiece = null;
+          }
         }
         console.log(e.target);
       });
