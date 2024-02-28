@@ -34,6 +34,10 @@ button {
   cursor: pointer;
 }
 
+.selected {
+  border: 2px solid yellow;
+}
+
 .chess-board {
   display: flex;
   flex-direction: column;

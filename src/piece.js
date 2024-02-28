@@ -29,7 +29,6 @@ class Piece {
     const newSquare = document.getElementById(newLocation);
 
     if (newSquare.childNodes.length > 1) {
-      console.log(newSquare.childNodes);
       console.log("THIS IS NOT EMPTY");
     } else {
       oldSquare.removeChild(this.figureImage);
@@ -37,9 +36,6 @@ class Piece {
 
       this.location = newLocation;
     }
-  }
-  capture() {
-    // TODO: DEFINE CAPTURE
   }
 }
 
